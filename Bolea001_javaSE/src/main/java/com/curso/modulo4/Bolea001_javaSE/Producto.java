@@ -15,9 +15,28 @@ public class Producto
 	
 	//var local s, cuando acabo el metodo
 	//var local inicializar
-	public Producto(String s) {
-		this.descrip = s;
-		this.precio= PRECIO_MINIMO;
+	public Producto(String s, double precio) {
+		if(s!= null) {
+			this.descrip = s;
+		}
+		else {
+			this.descrip= "Indefinido";
+		}
+		if(precio >0) {
+			this.precio = precio;
+		}
+		//this.precio= PRECIO_MINIMO;
+	}
+	
+	public Producto(int id,String descripcion, double precio) {
+		//this la primera opcion
+		this(descripcion, precio); // llamar al contructor Producto(String s) Utiliza el cod del anterior
+		this.id = id;
+		//this.precio= PRECIO_MINIMO;
+	}
+	
+	public Producto(int id, String descripcion) {
+		this(id,descripcion, PRECIO_MINIMO);
 	}
 	
 	public void increPrecio() {
