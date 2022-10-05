@@ -22,5 +22,5 @@ public class EjemploAmbitos {
 		//RAM en la memoria dinamica(heap) tengo un obj producto con 3 atributos o var instancia (id, descrp, precio)
 		
 		Producto p2 = new Producto(2,"zapato");
-		
+		Producto p3 = new Producto(3,"zapato");
 }
