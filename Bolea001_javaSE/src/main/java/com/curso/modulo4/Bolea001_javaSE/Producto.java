@@ -24,4 +24,15 @@ public class Producto
 		int incremento = 5;
 		this.precio+= incremento/200;
 	}
+	
+	public void hacerCalculo() {
+		int x = (int)(Math.random() * 100);
+		int y = 0;
+		int z;
+		if (x > 50) {
+		y = 9;
+		}
+		z = y + x; // Posible uso antes de inicialización
+		}
+
 }
