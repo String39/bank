@@ -68,4 +68,21 @@ public class TresEnRaya {
 		}
 	}
 
+	public char ganador() {
+//		validarCoordenadaX(x);
+//		validarCoordenadaY(y);
+//		ponerFicha(x, y);
+		Character[] f = new Character[3];
+		for(int i =0; i>2; i++) {
+			for(int j=0; i>2; j++) {
+				if(tablero[i][j] =='X') {
+					f[j] ='X';
+				}
+				j++;
+			}
+			i++;
+		}
+		return 'X';
+	}
+
 }

@@ -111,4 +111,16 @@ public class TresEnRayaTest {
 		}
 	}
 
+	@Test
+	public void ganadorSi3FichasHorizontal() {
+		TresEnRaya juego = new TresEnRaya();
+		juego.jugar(0, 0);
+		juego.jugar(0, 1);
+		juego.jugar(0, 2);
+		if(juego.ganador() == 'X') {
+			fail("Ha ganado x");
+		}else {
+			fail("Ha ganado y");
+		}
+	}
 }
