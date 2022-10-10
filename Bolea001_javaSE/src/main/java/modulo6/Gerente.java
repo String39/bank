@@ -11,4 +11,8 @@ public class Gerente extends Empleado{
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
 	}
+	@Override
+	public String getDetails() {
+		return "Nombre" + getNombre() + "Con salario: " + getSalario() + "Es el gerente del:" + getDepartamento();
+	}
 }

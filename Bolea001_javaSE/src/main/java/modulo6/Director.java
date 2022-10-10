@@ -18,5 +18,10 @@ public class Director extends Gerente{
 	public void aumentarComision() {
 		
 	}
+	
+	@Override
+	public String getDetails() {
+		return "Nombre" + getNombre() + "Con salario: " + getSalario() + "Es el gerente del:" + getDepartamento() + "y tiene como vehiculo" + getVehiculoEmpresa();
+	}
 
 }
