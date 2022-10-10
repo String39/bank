@@ -28,7 +28,5 @@ public class Prueba {
 		//Carlos.setDepartamento("...."): ERROR
 		
 		Carlos = new Empleado();
-		
-		
 	}
 }
