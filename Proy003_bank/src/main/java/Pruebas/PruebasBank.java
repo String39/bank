@@ -14,16 +14,16 @@ public class PruebasBank {
 		Customer c;
 		Account a;
 		
-		 	System.out.println("Creating the customer Jane Smith.");
+		 	System.out.println("Jane Smith.");
 		    b.añadir("Jane", "Simms");
 		    c = b.getCustomer(0);
-		    System.out.println("Creating her Savings Account with a 500.00 balance and 3% interest.");
+		    System.out.println("Cuenta con 500.00 balance y 3% interest.");
 		    c.setAccount(new SavingAccount(500.00, 0.03));
 		
-		    System.out.println("Creating the customer Jane Smith.");
+		    System.out.println("Oewn Bryant");
 		    b.añadir("Owen", "Bryant");
 		    c = b.getCustomer(1);
-		    System.out.println("Creating her Savings Account with a 500.00 balance and 3% interest.");
+		    System.out.println("Cuenta con 500.00 balance y 3% interest.");
 		    c.setAccount(new SavingAccount(500.00, 0.03));
 		    
 //		    System.out.println("Retrieving the customer Jane Smith with her savings account.");
