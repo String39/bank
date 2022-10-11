@@ -56,6 +56,11 @@ public class Customer
 		int cuenta = numberOfAccounts++;
 		accounts[cuenta] = a;
 	}
+
+	public void setAccount(SavingAccount savingAccount) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	
