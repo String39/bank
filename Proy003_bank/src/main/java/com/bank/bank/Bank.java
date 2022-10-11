@@ -2,11 +2,15 @@ package com.bank.bank;
 
 public class Bank 
 {
-	private Customer[] customers;
-	private int numberOfCustomers;
+	private static Customer[] customers;
+	private static int numberOfCustomers;
 	
-	public Bank() 
-	{
+//	public Bank() 
+//	{
+//		customers = new Customer[7];
+//		numberOfCustomers = 0;	
+//	}
+	static {
 		customers = new Customer[7];
 		numberOfCustomers = 0;	
 	}
@@ -23,6 +27,15 @@ public class Bank
 	
 	public Customer getCustomer(int i) {
 		return customers[i];
+	}
+	
+	public void generarInforme () {
+		System.out.println("INFORME CLIENTES");
+		System.out.println("----------------");
+		
+		for (int i=0; i<getNumberOfCustomers(); i++) {
+			Customer c = getCustomer(i);
+		}
 	}
 	
 }
