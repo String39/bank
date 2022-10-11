@@ -14,15 +14,15 @@ public class Cliente {
 		System.out.println("-----------------");
 		System.out.println("Nombre: " + c.getNombre()); 
 		System.out.println("Apellidos: " + c.getApellidos());
-		System.out.println("Tiene un saldo de: " + c.getAccount().getBalance());
+		System.out.println("Tiene un saldo de: " + c.getAccount(0).getBalance());
 		
 		//ingreso
 		System.out.println("Ingreso la cantidad de 300");
-		c.getAccount().deposito(300);
+		c.getAccount(0).deposito(300);
 		//sacar
 		System.out.println("Saco 150");
-		c.getAccount().retirar(150);
-		System.out.println("El saldo actual es:" + c.getAccount().getBalance());
+		c.getAccount(0).retirar(150);
+		System.out.println("El saldo actual es:" + c.getAccount(0).getBalance());
 		
 	}
 
