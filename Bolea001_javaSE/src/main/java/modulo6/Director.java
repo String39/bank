@@ -1,11 +1,15 @@
 package modulo6;
 
+import java.util.Date;
+
 public class Director extends Gerente{
+	
 	private double vehiculoEmpresa;
 	
-	public Director() {
-		vehiculoEmpresa= 0.0;
-	}
+	public Director(String nombre, double salario, Date fNac, String departamento) {
+		super(nombre, salario, fNac, departamento);
+		this.vehiculoEmpresa = 0.0;	
+		}
 
 	public double getVehiculoEmpresa() {
 		return vehiculoEmpresa;
