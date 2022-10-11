@@ -31,10 +31,6 @@ public class Customer
 		Apellidos = apellidos;
 	}
 
-//	public Account[] getAccounts() {
-//		return accounts;
-//	}
-
 	public void setAccounts(Account[] accounts) {
 		this.accounts = accounts;
 	}
@@ -49,6 +45,10 @@ public class Customer
 
 	public Account getAccount(int index) {
 		return accounts[index];
+	}
+	
+	public Account[] getAccounts() {
+		return accounts;
 	}
 
 	//metodos

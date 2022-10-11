@@ -29,13 +29,13 @@ public class Bank
 		return customers[i];
 	}
 	
-	public void generarInforme () {
-		System.out.println("INFORME CLIENTES");
-		System.out.println("----------------");
-		
-		for (int i=0; i<getNumberOfCustomers(); i++) {
-			Customer c = getCustomer(i);
-		}
-	}
+//	public void generarInforme () {
+//		System.out.println("INFORME CLIENTES");
+//		System.out.println("----------------");
+//		
+//		for (int i=0; i<getNumberOfCustomers(); i++) {
+//			Customer c = getCustomer(i);
+//		}
+//	}
 	
 }
