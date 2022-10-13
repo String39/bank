@@ -59,28 +59,30 @@ public class VehiculoMejorado {
 	 * si el peso a cargar supera el maximo permitido ....
 	 * 
 	 * @param peso Peso de la caja a cargar en kg
+	 * @throws CargaException 
 	 * @throws RuntimeException el peso de la caja no es valdo o supera la 
 	 * carga maxima permitida
 	 */
 	//metodo publico con argumentos siempre validarlos
-	public void cargaCaja (double peso) 
+	public void cargaCaja (double peso) throws CargaException 
 	{
 		//validar que el peso > 0
 		if(peso <=0) {
-			throw new RuntimeException("NO puede ser peso negativo");
+			throw new CargaException("La caja debe pesar algo", 0);
 		}
 		
 		//validar que cabe, no supera la carga maxima
 		if(peso + cargaActual > cargaMaxima) 
 		{
-			throw new RuntimeException("No caben mas cajas");
+			double exceso =  (peso +cargaActual)- cargaMaxima ;
+			throw new CargaException("No caben mas cajas" , exceso);
 		}
 		
 		this.cargaActual += peso;
 		this.numCajas ++;
 	}
 	
-	public void cargarCaja(Caja c) {
+	public void cargarCaja(Caja c) throws CargaException {
 		cargaCaja(c.getPeso());
 	}
 	
