@@ -22,7 +22,6 @@ public class Cliente {
 		try {
 			c.getAccount(0).deposito(300);
 		} catch (OverdraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//sacar
@@ -30,7 +29,6 @@ public class Cliente {
 		try {
 			c.getAccount(0).retirar(150);
 		} catch (OverdraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("El saldo actual es:" + c.getAccount(0).getBalance());
