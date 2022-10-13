@@ -9,18 +9,18 @@ package com.flota.dominio;
  *
  */
 
-public class Vehiculo {
+public abstract class Vehiculo {
 	//atributos
 	private double cargaMaxima ;
 	private double cargaActual = 0.0;
 	private String matricula ;
-	private int numCajas = 0;
+	protected int numCajas = 0;
 
 //	//guion bajo solo para constantes
 //	public final double CARGA_MAXIMA = 434234.2352;
 	
 	// constructor
-	public Vehiculo(String matricula, double cargaMaxima) 
+	protected Vehiculo(String matricula, double cargaMaxima) 
 	{
 		// validar matricula no null
 		// validar cargaMaxima > 0
@@ -66,7 +66,7 @@ public class Vehiculo {
 	public void cargaCaja (double peso) 
 	{
 		//validar que el peso > 0
-		if(peso >=0) {
+		if(peso <=0) {
 			throw new RuntimeException("NO puede ser peso negativo");
 		}
 		
@@ -93,5 +93,7 @@ public class Vehiculo {
 	{
 		return numCajas;
 	}
-
+	
+	public abstract double consumoFuel();
+	
 }
