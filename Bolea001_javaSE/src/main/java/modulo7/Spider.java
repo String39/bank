@@ -8,7 +8,7 @@ public class Spider extends Animal{
 
 	@Override
 	public  void eat() {
-		System.out.println(" Soy araña y como bichos y moscas");
+		System.out.println("Soy una Araña y como bichos y moscas");
 	}
 
 }
