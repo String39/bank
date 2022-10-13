@@ -15,7 +15,6 @@ public class Cuentas {
 		try {
 			System.out.println("Saldo actual es:" + a.deposito(150));
 		} catch (OverdraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.printf("%n");
