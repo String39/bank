@@ -16,22 +16,24 @@ public class Account
 		return balance;
 	}
 	
-	public double deposito (double cantidad) 
+	public double deposito (double cantidad) throws OverdraftException 
 	{
 		if(balance >0) {
 			balance = balance + cantidad;
 			//throw new RuntimeException("Saldo Negativo");
 		}
 		else {
-			System.out.println("NO se puede ingresar dinero negativo");
+			throw new OverdraftException("NO se puede ingresar dinero negativo", 0);
+			//System.out.println("NO se puede ingresar dinero negativo");
 		}
 		return balance;
 	}
 	
-	public double retirar (double cantidad) 
+	public double retirar (double cantidad) throws OverdraftException 
 	{
 		if(cantidad <=0) {
-			System.out.println("Introducir cantidad mayor que 0");
+			throw new OverdraftException("Introducir cantidad", 0);
+			//System.out.println("Introducir cantidad mayor que 0");
 		} 
 		
 		if(balance >= cantidad) 
@@ -42,7 +44,8 @@ public class Account
 		}
 		else 
 		{
-			System.out.println("Saldo insuficiente");
+			throw new OverdraftException("Saldo insuficiente", 0);
+			//System.out.println("Saldo insuficiente");
 		}
 		return balance;
 	}

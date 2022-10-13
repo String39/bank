@@ -2,6 +2,7 @@ package Pruebas;
 
 import com.bank.bank.Account;
 import com.bank.bank.Customer;
+import com.bank.bank.OverdraftException;
 
 public class Cliente {
 
@@ -18,10 +19,20 @@ public class Cliente {
 		
 		//ingreso
 		System.out.println("Ingreso la cantidad de 300");
-		c.getAccount(0).deposito(300);
+		try {
+			c.getAccount(0).deposito(300);
+		} catch (OverdraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//sacar
 		System.out.println("Saco 150");
-		c.getAccount(0).retirar(150);
+		try {
+			c.getAccount(0).retirar(150);
+		} catch (OverdraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("El saldo actual es:" + c.getAccount(0).getBalance());
 		
 	}

@@ -1,6 +1,7 @@
 package Pruebas;
 
 import com.bank.bank.Account;
+import com.bank.bank.OverdraftException;
 
 public class Cuentas {
 
@@ -11,19 +12,34 @@ public class Cuentas {
 		//ingresar dinero
 		System.out.println("Saldo actual es: " +a.getBalance());
 		System.out.println("Ingreso 150");
-		System.out.println("Saldo actual es:" + a.deposito(150));
+		try {
+			System.out.println("Saldo actual es:" + a.deposito(150));
+		} catch (OverdraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.printf("%n");
 		
 		//retirar dinero
 		System.out.println("Saldo actual es:" + a.getBalance());
 		System.out.println("Retiro 55");
-		System.out.println("Saldo actual es:" + a.retirar(55));
+		try {
+			System.out.println("Saldo actual es:" + a.retirar(55));
+		} catch (OverdraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.printf("%n");
 		
 		//retirar dinero insuficiente
 		System.out.println("Saldo actual es: " +a.getBalance());
 		System.out.println("Retiro 600");
-		System.out.println("Saldo actual es:" + a.retirar(600));
+		try {
+			System.out.println("Saldo actual es:" + a.retirar(600));
+		} catch (OverdraftException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
