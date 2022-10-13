@@ -26,7 +26,6 @@ public class Cuentas {
 		try {
 			System.out.println("Saldo actual es:" + a.retirar(55));
 		} catch (OverdraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.printf("%n");
@@ -37,7 +36,6 @@ public class Cuentas {
 		try {
 			System.out.println("Saldo actual es:" + a.retirar(600));
 		} catch (OverdraftException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
