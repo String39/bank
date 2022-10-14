@@ -10,7 +10,6 @@ public class Refresco
 	
 	
 	public Refresco(double precio, String sabor, int cl, boolean agotado, int i) {
-		super();
 		this.precio = precio;
 		this.sabor = sabor;
 		this.cl = cl;
@@ -39,12 +38,18 @@ public class Refresco
 		this.cl = cl;
 	}
 	public int isStock() {
+		if(this.stock <0) {
+			System.out.println("NO hay stock");
+		}
 		return stock;
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
 	public boolean isAgotado() {
+		if(this.stock<0) {
+			System.out.println("Producto agotado");
+		}
 		return agotado;
 	}
 	

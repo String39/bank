@@ -50,6 +50,8 @@ public class EjemplosMap {
 		//LinkedHasMap  --- Recorro la coleccion a traves de la Key por orden de inserccion
 		//TreeMap --Recorro al coleccion a traves de la Key por orden de Comparable/Comparator
 		
+		
+	
 	}
 
 	

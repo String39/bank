@@ -1,8 +1,10 @@
 package com.curso.MaquinaExpendedora.Maquina_expendedora;
 
+import java.util.List;
+
 public class Expendedora 
 {
-	private Refresco[] refresco;
+	private List<Refresco> refresco;
 	private double cambios;
 	private int ventas;
 	
@@ -12,11 +14,11 @@ public class Expendedora
 		this.ventas = 0;
 	}
 
-	public Refresco[] getRefresco() {
+	public List<Refresco> getRefresco() {
 		return refresco;
 	}
 
-	public void setRefresco(Refresco[] refresco) {
+	public void setRefresco(List<Refresco> refresco) {
 		this.refresco = refresco;
 	}
 
@@ -32,18 +34,32 @@ public class Expendedora
 	{
 		for (int i=0; i<r.isStock(); i++) 
 		{
-			if(refresco[i].isAgotado()) {
-				refresco[i] = new Refresco(i, null, i, false, i);
+			if(!refresco.contains(r)) {
+				refresco.add(r);
+			}else {
+				System.out.println("Producto ya existente");
 			}
 		}
 	}
 	
 	public void quitarRefresco(Refresco r) 
 	{
-			
-	}
+		for (int i=0; i<r.isStock(); i++) 
+		{
+			if(refresco.contains(r)) {
+				refresco.remove(r);
+			}else {
+				System.out.println("Producto no encontrado");
+			}
+			}
+		}
 	
-	public void Informe(Refresco r) {
+	
+	public void Informe() 
+	{
+		for (Refresco r :refresco) {
+			System.out.println(r);
+		}
 		
 	}
 	
