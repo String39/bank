@@ -14,6 +14,7 @@ public class EjemplosMap {
 		
 		//key no duplicado - value
 		map = new HashMap();  //no ordenado
+		//Puedes cambiar entre HasMap, TreeMap y LinkedHasMap
 		Map<Integer, Punto> figura = new HashMap();
 		figura.put(1, new Punto(0,0));
 		figura.put(10, new Punto(4,6));
