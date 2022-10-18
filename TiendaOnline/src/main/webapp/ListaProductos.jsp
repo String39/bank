@@ -18,7 +18,9 @@
 	
 	<ul>
 	<c:forEach var="producto" items="${requestScope.lista}">
-		<li>${producto.idProducto} - ${producto.descripcion} - ${producto.precio }</li>
+		<li>${producto.idProducto}</li>
+		<li>${producto.descripcion}</li>
+		<li>${producto.precio}</li><br>
 	</c:forEach>
 	</ul>
 </body>
