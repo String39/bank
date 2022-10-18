@@ -1,6 +1,7 @@
 package com.curso.mercado.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,13 +58,19 @@ public class AltaProductoServlet extends HttpServlet {
 			request.setAttribute("error", msgError);
 			RequestDispatcher rd = request.getRequestDispatcher("AltaProducto.jsp");
 			rd.forward(request, response);
-		}else 
+		}
+		else 
 		{
 			Producto p = new Producto(null, paramDescripcion, precio);
 			System.out.println("vamos a dar de alta" + p);
 			ps.darAltaProducto(p);
 			//despache la pagina listaproductos.jsp
-			response.getWriter().append("OK Todo correcto " + p);
+			//response.getWriter().append("OK Todo correcto " + p);
+			
+			List<Producto> listaProductos = ps.dameTodosLosProductos();
+			request.setAttribute("lista", listaProductos);
+			RequestDispatcher rd = request.getRequestDispatcher("ListaProductos.jsp");
+			rd.forward(request, response);
 		}
 		
 		
