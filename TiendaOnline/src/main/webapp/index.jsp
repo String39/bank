@@ -18,7 +18,7 @@
     <h1>Tienda ONLINE</h1>
 	<a class="btn btn-primary" href="AltaProducto.jsp" role="button">Alta producto</a>
 	
-	<a class="btn btn-primary" href="#" role="button">Lista Produtos</a>
+	<a class="btn btn-primary" href="ListaProductos.jsp" role="button">Lista Produtos</a>
 	
     <!-- Optional JavaScript; choose one of the two! -->
 
