@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +17,13 @@
 	<H1>Tienda Online</H1>
 	<h4>Alta de un Producto Nuevo</h4>
 	
-	<form action ="AltaServlet" method="post">
-		NombreProducto <input type="Text" name="descripcion" value="">
+	<form action ="altaproducto" method="post">
+		Nombre Producto <input type="Text" name="descripcion" value=""><br>
+		Precio Producto <input type="Text" name="precioUnidad" value="">
 		<button type="submit" class="btn btn-primary">Enviar</button>
 	</form>
+	<div class="border border-warning">
+		${requestScope.error}
+	</div>	
 </body>
 </html>
