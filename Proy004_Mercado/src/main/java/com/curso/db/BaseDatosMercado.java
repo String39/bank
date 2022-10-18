@@ -6,48 +6,60 @@ import java.util.TreeMap;
 
 import com.curso.mercado.entidades.Producto;
 
+
 public class BaseDatosMercado {
+	
 	private static Map<Integer, Producto> tablaProducto;
-	private static int contador = 1;
+	private static int contador = 3;
 	
-	//iniciar el static tablaProducto
+	
+	// iniciar el static tablaProducto
 	static {
-		tablaProducto = new TreeMap<Integer, Producto>();
-		tablaProducto.put(1, new Producto(1, "Libro Recetas", 30.0));
-		tablaProducto.put(2, new Producto(2, "Jarron", 23.0));
-		tablaProducto.put(3, new Producto(3, "Lápiz", 1.0));
+		tablaProducto = new TreeMap<Integer,Producto>();
+		tablaProducto.put(1, new Producto(1, "Libro Recesta", 30.0));
+		tablaProducto.put(2, new Producto(2, "Jarrón Chino", 340.0));
+		tablaProducto.put(3, new Producto(3, "Lápiz", 3.0));
 		
 	}
 	
-	private BaseDatosMercado() {
-	}
+	private BaseDatosMercado() {}
+	
+	//crear los métodos para añadir, borrar, modificar solicitar por
+	// id y solicitar todos
 	
 	
-	//crear los metodos añadir, borrar, modificar solicitar
-	//por id y solicitar todos
-	public static void añadir(String nombre, double precio) {
+	public static void add(String nombre, double precio) {
 		int newId = ++contador;
-		Producto p1 = new Producto(newId, nombre, precio);
-		tablaProducto.put(newId, p1);
+		Producto newP = new Producto(newId, nombre,precio);
+		tablaProducto.put(newId, newP);
 	}
 	
-	public static void borrar(Producto p) {
-		tablaProducto.remove(p);
-	}
-	
-	public static void modificar(Producto p) {
-		
-	}
-	
-	public Producto solicitarPorId(int id) {
-		return null;
-		
-	}
 	
 	public static Collection<Producto> getAll(){
 		return tablaProducto.values();
-		
+	}
+	
+	public static Producto findById(int id) {
+		return tablaProducto.get(id);
 	}
 	
 	
+	public static void update(Producto pModf) throws Exception {
+		Producto p = findById(pModf.getIdProducto());
+		if(p == null) {
+			throw new Exception("Producto no encontrado para se modificado");
+		}
+		tablaProducto.put(pModf.getIdProducto(), pModf);
+	}
+	
+	public static void delete(int id) {
+		tablaProducto.remove(id);
+	}
+	
+	public static int getContador() {
+		return contador;
+	}
+	
+	
+
 }
