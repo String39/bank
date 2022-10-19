@@ -20,10 +20,12 @@
 	<h1>Tienda Online</h1>
 	<div> usuario: ${sessionScope.usuario.nombre }</div>
 	<h4>Lita de productos</h4>
-	
+	<div class="border border-warning">
+	${requestScope.mensaje}
+	</div>
 	<ul>
 	<c:forEach var="producto" items="${requestScope.lista}">
-		<li>${producto.idProducto} - ${producto.descripcion}</li><a href="comprar?id=${producto.idProducto}">Comprar 1 unidad</a> 
+		<li>${producto.idProducto} - ${producto.descripcion} - ${producto.stock}</li><a href="comprar?idProducto=${producto.idProducto}">Comprar</a> 
 	</c:forEach>
 	</ul>
 </body>

@@ -24,7 +24,8 @@ public class AltaProductoServlet extends HttpServlet {
         super();
         System.out.println(".... instanciando AltProductoServlet");
     }
-
+    
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(".... estoy en el doPost");
 		String paramDescripcion = request.getParameter("nombreProducto");

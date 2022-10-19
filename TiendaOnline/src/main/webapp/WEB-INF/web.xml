@@ -42,7 +42,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>VentasServlet</servlet-name>
-  	<url-pattern>/VentasServlet</url-pattern>
+  	<url-pattern>/comprar</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>ListaProductosServlet</servlet-name>

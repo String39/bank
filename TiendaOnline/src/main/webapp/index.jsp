@@ -19,12 +19,12 @@
     <h1>TIENDA ONLINE ${applicationScope.tituloTienda }</h1>
     
     <div> usuario: ${sessionScope.usuario.nombre }</div>
-    <div> rol: ${sessionScope.usuario.rol }</div>
-	<a class="btn btn-primary" href="lista-productos.jsp" role="button">Ver Lista Productos</a>
 	
 	<c:if test="${sessionScope.usuario.rol == 'Administrador' }">
 		<a class="btn btn-primary" href="alta-producto.jsp" role="button">Alta de producto</a>
 	</c:if>
+		<a class="btn btn-primary" href="ListaProductos" role="button">Lista Productos</a>
+	
 	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
