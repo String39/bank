@@ -1,28 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>USUARIOS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<title>Login</title>
 </head>
 <body>
-	<div class="mb-3 row">
-    	<label for="staticEmail" class="col-sm-2 col-form-label">USUARIO</label>
-    <div class="col-sm-10">
-      <input type="text"  class="form-control-plaintext" id="staticEmail" value="email@example.com">
-    </div>
-  </div>
-  <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Roll</label>
-    <div class="col-sm-10">
-      <select class="form-select" aria-label="Default select example">
-  		<option selected>Selecciona</option>
-  		<option value="1">Cliente</option>
-  		<option value="2">Usuario</option>
+
+
+	<h1>Tienda Online</h1>
+	<h4>Login</h4>
+
+
+
+	<form action="login" method="post">
+
+
+		<label for="nombreUsr">Nombre Usuario</label> <input type="text"
+			id="nombreUsr" name="nombre" /> <label for="rolUsr">Role</label> <select
+			id="rolUsr" name="rol">
+			<option value="administrador">administrador</option>
+			<option value="cliente" selected>cliente</option>
 		</select>
-    </div>
-    <a class="btn btn-primary" href="#" role="button">GRABAR</a>
-  </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+	</form>
+
+
 </body>
 </html>
