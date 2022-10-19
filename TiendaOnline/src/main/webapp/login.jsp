@@ -14,14 +14,10 @@
 </head>
 <body>
 
-
 	<h1>Tienda Online</h1>
 	<h4>Login</h4>
 
-
-
 	<form action="login" method="post">
-
 
 		<label for="nombreUsr">Nombre Usuario</label> <input type="text"
 			id="nombreUsr" name="nombre" /> <label for="rolUsr">Role</label> <select

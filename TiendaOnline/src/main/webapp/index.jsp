@@ -19,13 +19,10 @@
     
     <div> usuario: ${requestScope.usuario.nombre }</div>
     
-    <c:if test="${sessionScope.usuario.rol == 'administrador'}">
+    <c:if test="${sessionScope.usuario.roll == 'administrador'}">
     <a class="btn btn-primary" href="alta-producto.jsp" role="button">Alta Producto</a>
    </c:if>
     <a class="btn btn-primary" href="lista-productos.jsp" role="button">Lista Productos</a>
     
-    
- 
-
   </body>
 </html>

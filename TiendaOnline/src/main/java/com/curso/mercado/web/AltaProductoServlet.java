@@ -5,75 +5,90 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.curso.mercado.entidades.Producto;
 import com.curso.mercado.servicios.ProductosService;
 
-
+@WebServlet(urlPatterns = "altaProducto",loadOnStartup = 2)
 public class AltaProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+      
+	//ATRIBUTOS
+    ProductosService productoService = new ProductosService();
 	
-	ProductosService ps= new ProductosService();
-       
-    
+    //CONSTRUCTORES
     public AltaProductoServlet() {
         super();
-        System.out.println(".......instanciando AltaProductoServlet");
+        System.out.println(".... instanciando AltaProductoServlet");
     }
-
-	
+    
+    //METODOS
 	protected void doPost(HttpServletRequest request, 
-						  HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("........estoy en el doPost");
+			              HttpServletResponse response) throws ServletException, IOException {
 		
-		//leer los parametros que recibo en la peticion HTTP
+	
+		
+		System.out.println("..... estoy en el doPost");
+		
+		//leer los parametros que recibo en la petición HTTP
+		//si el parametro no existe devuelve null
+		
 		String paramDescripcion = request.getParameter("descripcion");
 		String paramPrecio = request.getParameter("precioUnidad");
 		
 		//validar parametros
 		String msgError = "";
-		if(paramDescripcion == null || paramDescripcion.trim().length() == 0) {
-			msgError = "Debes indicar una descripcion para el producto";
+		
+		if(paramDescripcion == null || paramDescripcion.trim().length() == 0 ) {
+			msgError = "Debes indicar una descripción para el producto";
 		}
 		
 		double precio = 0;
-		
-		//trim quita espacios tato por delante como por detras
-		if(paramPrecio == null || paramPrecio.trim().length() == 0) {
+		if(paramPrecio == null || paramPrecio.trim().length() == 0 ) {
 			msgError = "Debes indicar un precio para el producto";
 		}else {
-			//convierto String precio en double
+			// String precio en un double
 			precio = Double.parseDouble(paramPrecio); //falta controlar excepcion
 		}
-		
-		if(msgError.length()>0) 
-		{
-			System.out.println("FALLO " + msgError);
-			//despache la pagina altaproducto.jsp
-			//response.getWriter().append("error " + msgError);
 			
-			request.setAttribute("error", msgError);
-			RequestDispatcher rd = request.getRequestDispatcher("AltaProducto.jsp");
+		
+		if(msgError.length()>0) {
+			System.out.println("fallo " + msgError);
+			
+			//despache la pagina alta-producto.jsp
+			
+			//response.getWriter().append("error "  + msgError);
+			
+			request.setAttribute("errorBego", msgError);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("alta-producto.jsp");
 			rd.forward(request, response);
-		}
-		else 
-		{
+			
+			
+		}else {
 			Producto p = new Producto(null, paramDescripcion, precio);
-			System.out.println("vamos a dar de alta" + p);
-			ps.darAltaProducto(p);
-			//despache la pagina listaproductos.jsp
-			//response.getWriter().append("OK Todo correcto " + p);
+			System.out.println("vamos a dar de alta " + p);
+			productoService.darAltaUnproducto(p);
 			
-			List<Producto> listaProductos = ps.dameTodosLosProductos();
+			//response.getWriter().append("ok grabó "  + p);
+			//despache la pagina lista-productos.jsp
+			
+			List<Producto> listaProductos = productoService.dameTodosLosProductos();
+			
 			request.setAttribute("lista", listaProductos);
-			RequestDispatcher rd = request.getRequestDispatcher("ListaProductos.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("lista-productos.jsp");
 			rd.forward(request, response);
+			
 		}
 		
 		
-	}
+		
+	
+	}//fin doPost
 
 }
