@@ -7,20 +7,16 @@ import com.curso.mercado.persistencia.GenericDAO;
 import com.curso.mercado.persistencia.ProductoInMemoryDAO;
 
 public class ProductosService {
-	
 	GenericDAO<Producto> dao = new ProductoInMemoryDAO();
 	
-	public void darAltaUnproducto(Producto p) {
-		// valida que p no es null
-		//validar descripcion 
+	public void darAtaUnProducto(Producto p) {
+		//validar que p no es null
+		//validar descrlipcion
 		//validar precio
-		
 		dao.add(p);
-		
 	}
 	
-	public List<Producto>  dameTodosLosProductos() {
+	public List<Producto> dameTodosLosProductos(){
 		return dao.getAll();
 	}
-
 }

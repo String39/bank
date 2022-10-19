@@ -3,8 +3,7 @@ package com.curso.mercado.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements Serializable{
-
+public class Usuario implements Serializable {
 	private String nombre;
 	private String rol;
 	
@@ -13,24 +12,15 @@ public class Usuario implements Serializable{
 		this.nombre = nombre;
 		this.rol = rol;
 	}
-	
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getRol() {
-		return rol;
-	}
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
 
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(nombre);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -43,8 +33,24 @@ public class Usuario implements Serializable{
 		Usuario other = (Usuario) obj;
 		return Objects.equals(nombre, other.nombre);
 	}
-	
-	
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 	
 	
 }

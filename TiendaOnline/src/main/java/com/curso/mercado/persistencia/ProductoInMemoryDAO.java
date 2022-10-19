@@ -5,14 +5,7 @@ import java.util.List;
 
 import com.curso.db.BaseDatosMercado;
 import com.curso.mercado.entidades.Producto;
-/**
- * 
- * 
- *  DAO - Data Access Object
- *  
- * @author begonaolea
- *
- */
+
 public class ProductoInMemoryDAO implements GenericDAO<Producto> {
 
 	
