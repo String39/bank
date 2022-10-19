@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.xml.ws.Response;
 
 import com.curso.mercado.entidades.Producto;
 import com.curso.mercado.servicios.ProductosService;
@@ -25,6 +25,7 @@ public class AltaProductoServlet extends HttpServlet {
     public AltaProductoServlet() {
         super();
         System.out.println(".... instanciando AltaProductoServlet");
+    	
     }
     
     //METODOS

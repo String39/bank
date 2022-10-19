@@ -3,39 +3,35 @@ package com.curso.mercado.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements Serializable {
+public class Usuario implements Serializable{
+
 	private String nombre;
-	private String roll;
+	private String rol;
 	
-	
-	public Usuario() {
-		super();
-	}
-	public Usuario(String nombre, String roll) {
+	public Usuario(String nombre, String rol) {
 		super();
 		this.nombre = nombre;
-		this.roll = roll;
+		this.rol = rol;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getRoll() {
-		return roll;
+	public String getRol() {
+		return rol;
 	}
-	public void setRoll(String roll) {
-		this.roll = roll;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
-	@Override
-	public String toString() {
-		return "Usuario [nombre=" + nombre + ", roll=" + roll + "]";
-	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(nombre, roll);
+		return Objects.hash(nombre);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -45,7 +41,7 @@ public class Usuario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(nombre, other.nombre) && Objects.equals(roll, other.roll);
+		return Objects.equals(nombre, other.nombre);
 	}
 	
 	
