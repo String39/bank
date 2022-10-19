@@ -28,5 +28,15 @@
 		<li>${producto.idProducto} - ${producto.descripcion} - ${producto.stock}</li><a href="comprar?idProducto=${producto.idProducto}">Comprar</a> 
 	</c:forEach>
 	</ul>
+	
+	<form action="comprar" method="get">
+		<select>
+		<c:forEach var="producto" items="${requestScope.lista}">
+		<option value="${producto.idProducto}">${producto.descripcion}</option>
+		</c:forEach>
+		</select>
+		Cantidad <input type ="number" name="cantidad" value="">
+		<button type="submit" class="btn btn-primary">Comprar</button>
+	</form>
 </body>
 </html>
