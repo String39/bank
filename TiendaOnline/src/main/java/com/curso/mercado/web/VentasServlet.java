@@ -20,8 +20,6 @@ import com.curso.mercado.servicios.excepciones.VentasException;
 public class VentasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-	
     public VentasServlet() {
         super();
     }
@@ -29,9 +27,15 @@ public class VentasServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//leer parametro que recibe el idProducto
 		String paramId = request.getParameter("idProducto");
-		int idProductoComprar = 0;
+		String paramCantidad = request.getParameter("cantidad");
+		int idProductoComprar = -1;
 		if(paramId != null) {
 			idProductoComprar = Integer.parseInt(paramId); //falta controlar la excepcion
+		}
+		
+		int cantidad=1;
+		if(paramCantidad !=null) {
+			idProductoComprar = Integer.parseInt(paramCantidad);
 		}
 		
 		VentasService servicio = new VentasService();

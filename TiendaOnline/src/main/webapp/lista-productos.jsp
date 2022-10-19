@@ -30,7 +30,8 @@
 	</ul>
 	
 	<form action="comprar" method="get">
-		<select>
+	Producto:
+		<select name="idProducto">
 		<c:forEach var="producto" items="${requestScope.lista}">
 		<option value="${producto.idProducto}">${producto.descripcion}</option>
 		</c:forEach>
