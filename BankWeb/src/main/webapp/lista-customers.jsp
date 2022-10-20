@@ -16,9 +16,10 @@
 </head>
 <body>
 <h1> LISTA CLIENTES</h1>
+
 	<ul>
 	<c:forEach var="cliente" items="${requestScope.lista}">
-		<li>${customer.firstName} - ${customer.lastName}</li> 
+		<li>${cliente.firstName} - ${cliente.lastName}</li> 
 	</c:forEach>
 	</ul>
 </body>

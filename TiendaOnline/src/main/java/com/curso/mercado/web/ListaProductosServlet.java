@@ -13,11 +13,9 @@ import com.curso.mercado.entidades.Producto;
 import com.curso.mercado.servicios.ProductosService;
 
 
-
-
 public class ListaProductosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
     
     public ListaProductosServlet() {
         super();
@@ -30,14 +28,11 @@ public class ListaProductosServlet extends HttpServlet {
 		List<Producto> lista = service.dameTodosLosProductos();
 		
 		//añadir el atributo lista con todos los prod a la request
-		request.setAttribute("lista", lista);
-		
+		request.setAttribute("lista", lista);	
 		
 		//despachar la peticuion a listaProductos.jsp
 		RequestDispatcher rd = request.getRequestDispatcher("lista-productos.jsp");
 		rd.forward(request, response);
 	}
-
-	
 
 }

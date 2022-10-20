@@ -17,6 +17,6 @@
   </head>
 <body>
 <h2>BANCO</h2>
-	
+	<a class="btn" href="ListaClientesServlet" role="button">Listado</a>
 </body>
 </html>
