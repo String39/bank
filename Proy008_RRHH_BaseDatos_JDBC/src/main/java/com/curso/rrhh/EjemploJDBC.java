@@ -40,6 +40,11 @@ public class EjemploJDBC {
 				System.out.println(rs.getString(3)); //columna3
 			}
 			
+			//Insertar un pais
+			String sentenciaInsert= "INSERT INTO HR.COUNTRIES" + " VALUES ('XX','PAISXX',4)";
+			int regAfectado = st.executeUpdate(sentenciaInsert);
+			System.out.printf("Inserto %d registros" , regAfectado);
+			
 		} catch (SQLException e) {
 
 			System.out.println("Error BD " + e.getMessage());
