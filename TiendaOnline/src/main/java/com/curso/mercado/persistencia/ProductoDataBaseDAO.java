@@ -22,8 +22,27 @@ public class ProductoDataBaseDAO implements GenericDAO<Producto>{
 
 	@Override
 	public void add(Producto entidad) {
-		// TODO Auto-generated method stub
-		
+//		String insertar = "INSERT INTO HR.PRODUCTOS "
+//				+ "(ID_PRODUCTO, DESCRIPCION, PRECIO, STOCK)"
+//				+ " VALUES (1, 'Television', 1522.5, 8)";
+		String consulta = "SELECT * FROM HR.PRODUCTOS";
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(consulta);while(rs.next()) {
+				while(rs.next()) 
+				{
+					Producto p = new Producto();
+					p.setIdProducto(rs.getInt(entidad.getIdProducto()));
+					p.setDescripcion(rs.getString(entidad.getDescripcion()));
+					p.setPrecio(rs.getDouble((int) entidad.getPrecio()));
+					p.setStock(rs.getInt(entidad.getStock()));
+				}
+			}
+				
+		}
+		catch(SQLException e) {
+			
+		}
 	}
 
 	@Override
