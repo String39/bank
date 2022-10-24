@@ -28,7 +28,7 @@ public class ProductoDataBaseDAO implements GenericDAO<Producto>{
 		String consulta = "SELECT * FROM HR.PRODUCTOS";
 		try {
 			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(consulta);while(rs.next()) {
+			ResultSet rs = st.executeQuery(consulta);{
 				while(rs.next()) 
 				{
 					Producto p = new Producto();
