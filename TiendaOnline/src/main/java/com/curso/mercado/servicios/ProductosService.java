@@ -2,13 +2,20 @@ package com.curso.mercado.servicios;
 
 import java.util.List;
 
+import com.curso.db.PoolConexiones;
 import com.curso.mercado.entidades.Producto;
 import com.curso.mercado.persistencia.GenericDAO;
-import com.curso.mercado.persistencia.ProductoInMemoryDAO;
+import com.curso.mercado.persistencia.ProductoDataBaseDAO;
 
 public class ProductosService {
-	GenericDAO<Producto> dao = new ProductoInMemoryDAO();
+	private GenericDAO<Producto> dao;
 	
+	
+	public ProductosService() {
+		PoolConexiones pool = new PoolConexiones();
+		this.dao = new ProductoDataBaseDAO(pool.getConnection());
+	}
+
 	public void darAtaUnProducto(Producto p) {
 		//validar que p no es null
 		//validar descrlipcion

@@ -110,6 +110,24 @@ public class EjemploJDBC {
 			System.out.printf("nombre del pais %s es %s. " , codigo, NombrePaisRecuperado);
 			modificarPaises(con, "AR", "US");
 			
+			
+			String crearTablaProducto = "CREATE TABLE HR.PRODUCTOS "
+					+ " (ID_PRODUCTO NUMBER NOT NULL ENABLE PRIMARY KEY, "
+					+ "	DESCRIPCION VARCHAR2(50 BYTE) NOT NULL ENABLE, "
+					+ "	PRECIO NUMBER DEFAULT 0 NOT NULL ENABLE, "
+					+ "	STOCK NUMBER DEFAULT 0 NOT NULL ENABLE)";
+			//con.createStatement().execute(crearTablaProducto);
+			
+			String insertProductos = "INSERT INTO HR.PRODUCTOS "
+					+ "(ID_PRODUCTO, DESCRIPCION, PRECIO, STOCK) "
+					+ " VALUES (1, 'Television', 1522.5, 8)"; 
+			String insertProductos2 = "INSERT INTO HR.PRODUCTOS "
+					+ "(ID_PRODUCTO, DESCRIPCION, PRECIO, STOCK) "
+					+ " VALUES (2, 'DVD', 25.6, 20)";	
+//			con.createStatement().execute(insertProductos);
+//			con.createStatement().execute(insertProductos2);
+			
+			
 		} 
 		catch (SQLException e) 
 		{
