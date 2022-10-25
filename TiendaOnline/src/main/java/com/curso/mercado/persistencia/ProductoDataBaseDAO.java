@@ -1,6 +1,7 @@
 package com.curso.mercado.persistencia;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,26 +23,25 @@ public class ProductoDataBaseDAO implements GenericDAO<Producto>{
 
 	@Override
 	public void add(Producto entidad) {
-//		String insertar = "INSERT INTO HR.PRODUCTOS "
-//				+ "(ID_PRODUCTO, DESCRIPCION, PRECIO, STOCK)"
-//				+ " VALUES (1, 'Television', 1522.5, 8)";
-		String consulta = "SELECT * FROM HR.PRODUCTOS";
+		
+//		String sentencia = "SELECT MAX(ID_PRODUCTO) "
+//				+ " FROM HR.PRODUCTOS ";
 		try {
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(consulta);{
-				while(rs.next()) 
-				{
-					Producto p = new Producto();
-					p.setIdProducto(rs.getInt(entidad.getIdProducto()));
-					p.setDescripcion(rs.getString(entidad.getDescripcion()));
-					p.setPrecio(rs.getDouble((int) entidad.getPrecio()));
-					p.setStock(rs.getInt(entidad.getStock()));
-				}
-			}
-				
-		}
-		catch(SQLException e) {
+			int newId =  this.getUltimoIdProducto()+1;
 			
+			//TODO obtener el ultimo id
+			String insertar = "INSERT INTO HR.PRODUCTOS "
+					+ "(ID_PRODUCTO, DESCRIPCION, PRECIO, STOCK)"
+					+ " VALUES (?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(insertar);
+			ps.setInt(1, newId);
+			ps.setString(2, entidad.getDescripcion());
+			ps.setDouble(3, entidad.getPrecio());
+			ps.setInt(4, entidad.getStock());
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException("No se ha podido añadir" + e.getMessage(), e);
 		}
 	}
 
@@ -87,6 +87,21 @@ public class ProductoDataBaseDAO implements GenericDAO<Producto>{
 	public void update(Producto entidad) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private int getUltimoIdProducto() {
+		String consulta = "SELECT max(ID_PRODUCTO) FROM HR.PRODUCTOS";
+		try {
+			ResultSet rs = con.createStatement().executeQuery(consulta);
+			if(rs.next()) {
+				return rs.getInt(1);
+			}else {
+				return 0;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException("No se pudo obtener el ultimo id" + e.getMessage(), e);
+		}
 	}
 
 }
