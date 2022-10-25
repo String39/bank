@@ -1,8 +1,12 @@
 package com.curso.JPA.pruebas;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.curso.JPA.entidades.Trabajo;
 
@@ -77,9 +81,14 @@ public class PruebaTrabajoJpa {
 				//remove
 				em.remove(tBD);
 				em.getTransaction().commit(); 
-
-
-
+				
+			//7. CONSULTA JPAQUERY
+																//Nombre de la clase
+				Query consulta = em.createQuery("SELECT t FROM Trabajo t");
+				List <Trabajo> lista = consulta.getResultList();
+				for(Trabajo trabajo:lista) {
+					System.out.println(trabajo);
+				}
 
 	}
 }
