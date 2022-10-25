@@ -24,26 +24,24 @@ public class ProductoDataBaseDAO implements GenericDAO<Producto>{
 	@Override
 	public void add(Producto entidad) {
 		
-//		String sentencia = "SELECT MAX(ID_PRODUCTO) "
-//				+ " FROM HR.PRODUCTOS ";
 		try {
-			int newId =  this.getUltimoIdProducto()+1;
-			
-			//TODO obtener el ultimo id
-			String insertar = "INSERT INTO HR.PRODUCTOS "
-					+ "(ID_PRODUCTO, DESCRIPCION, PRECIO, STOCK)"
-					+ " VALUES (?,?,?,?)";
+			int newID = this.getUltimoIdProducto()+1;
+			String insertar = "INSERT INTO HR.PRODUCTOS "+
+					"(ID_PRODUCTO, DESCRIPCION, PRECIO, STOCK) "+
+					"VALUES (?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(insertar);
-			ps.setInt(1, newId);
+			ps.setInt(1, newID);
 			ps.setString(2, entidad.getDescripcion());
 			ps.setDouble(3, entidad.getPrecio());
 			ps.setInt(4, entidad.getStock());
 			ps.executeUpdate();
-			
-		} catch (SQLException e) {
-			throw new RuntimeException("No se ha podido añadir" + e.getMessage(), e);
+			System.out.println("grabó ok el producto");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("No se pudo crear producto" + e.getMessage(),e);
 		}
-	}
+}
+
 
 	@Override
 	public List<Producto> getAll() {
