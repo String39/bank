@@ -22,6 +22,14 @@ public class PruebaTrabajoJpa {
 		
 		//3. obtener el tranbajo con un  id "AD_VP"
 		Trabajo t = em.find(Trabajo.class, "AD_VP");
+		if(t == null) 
+		{
+			System.out.println("No existe el trabajo AD_VP");
+		}
+		else 
+		{
+			System.out.println(t);
+		}
 		System.out.println(t);
 		
 		//4. Crear un nuevo Trabajo
