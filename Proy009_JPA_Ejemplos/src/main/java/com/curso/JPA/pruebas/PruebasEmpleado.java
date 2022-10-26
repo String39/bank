@@ -12,8 +12,6 @@ public class PruebasEmpleado {
 		
 		//1. Crear factoria Em
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("OracleHRPU");
-
-		//2. Crear un Em
 		EntityManager em = factory.createEntityManager();
 
 		//3. Crear una transaccion

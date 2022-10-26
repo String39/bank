@@ -29,6 +29,8 @@
 	
 		<class>com.curso.JPA.entidades.Trabajo</class>
 		<class>com.curso.JPA.entidades.Empleado</class>
+		<class>com.curso.JPA.entidades.Record</class>
+		<class>com.curso.JPA.entidades.Customer</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
