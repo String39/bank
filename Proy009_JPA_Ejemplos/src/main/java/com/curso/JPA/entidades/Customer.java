@@ -1,9 +1,20 @@
 package com.curso.JPA.entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Customer implements Serializable{
@@ -17,9 +28,17 @@ public class Customer implements Serializable{
 	private String customerName;
 	//private Long recordId;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)  //EAGER
 	@JoinColumn(name = "CUSTRECORD_RECID")  //FK
 	private Record record;
+	
+	//lista de los pedidos del cliente
+	@OneToMany(mappedBy = "cliente" , fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //LAZY despues
+	//@OneToMany(mappedBy = "cliente" , fetch = FetchType.EAGER) // en el momento del pedido
+	//mappedby es el nombre del atributo de la clase Oredr
+	//que tiene relacion con ManyToOne
+	private Collection<Order> pedidos;
+	
 	
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -54,6 +73,14 @@ public class Customer implements Serializable{
 
 	public void setRecord(Record record) {
 		this.record = record;
+	}
+	
+	public void setPedidos(Collection<Order> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
+	public Collection<Order> getPedidos() {
+		return pedidos;
 	}
 
 	@Override
