@@ -33,7 +33,7 @@ public class Customer implements Serializable{
 	private Record record;
 	
 	//lista de los pedidos del cliente
-	@OneToMany(mappedBy = "cliente" , fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //LAZY despues
+	@OneToMany(mappedBy = "cliente" , fetch = FetchType.LAZY) //LAZY despues
 	//@OneToMany(mappedBy = "cliente" , fetch = FetchType.EAGER) // en el momento del pedido
 	//mappedby es el nombre del atributo de la clase Oredr
 	//que tiene relacion con ManyToOne
