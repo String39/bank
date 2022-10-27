@@ -8,17 +8,25 @@ import javax.persistence.criteria.CriteriaBuilder.In;
 
 @Entity
 @Table(name = "DEPARTMENTS")
+@NamedQueries({
+	@NamedQuery(name = "Departamento.findAll", 
+			query = "SELECT d FROM Departamento d"),
+	@NamedQuery(name = "Departamento.findByManager", 
+			query = "SELECT d FROM Departamento d WHERE d.manager_id= :manager_id"),
+	@NamedQuery(name = "Departamento.findSinManager", 
+			query = "SELECT d FROM Departamento d WHERE d.manager_id IS NULL"),
+})
 public class Departamento implements Serializable{
 	
 	@Id
-	@Column(name = "department_id")
+	@Column(name = "DEPARTMENT_ID")
 	private Integer id;
 	
 	@Column(name = "DEPARTMENT_NAME")
 	private String nombreDepartamento;
 	
 	@Column(name = "MANAGER_ID")
-	private String manager_id;
+	private Integer manager_id;
 	
 	@Column(name = "LOCATION_ID")
 	private Integer idLocalidad;
@@ -27,7 +35,7 @@ public class Departamento implements Serializable{
 		super();
 	}
 
-	public Departamento(Integer id, String nombreDepartamento, String manager_id, Integer idLocalidad) {
+	public Departamento(Integer id, String nombreDepartamento, Integer manager_id, Integer idLocalidad) {
 		super();
 		this.id = id;
 		this.nombreDepartamento = nombreDepartamento;
@@ -51,11 +59,11 @@ public class Departamento implements Serializable{
 		this.nombreDepartamento = nombreDepartamento;
 	}
 
-	public String getManager_id() {
+	public Integer getManager_id() {
 		return manager_id;
 	}
 
-	public void setManager_id(String manager_id) {
+	public void setManager_id(Integer manager_id) {
 		this.manager_id = manager_id;
 	}
 

@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.curso.JPA.entidades.Departamento;
 import com.curso.JPA.entidades.Empleado;
 
 public class PruebasEmpleado {
@@ -22,7 +23,10 @@ public class PruebasEmpleado {
 			e.setNombre("LUis");
 			e.setApellidos("Garcia");
 			e.setFechaContratacion(new java.util.Date());
-			e.setIdDepartamento(10);
+			Departamento d = new Departamento();
+			d.setId(10);
+			e.setDepartamento(d);
+			//e.setIdDepartamento(10);
 			e.setIdTrabajo("ST_MAN");
 			e.setEmail("fff@gg.es");
 			em.persist(e);
