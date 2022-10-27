@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.curso.mercado.entidades.Usuario;
+import com.curso.mercado.persistencia.ProductoJPADAO;
 
 //@WebServlet(urlPatterns = "login", loadOnStartup = 1)
 
@@ -39,6 +40,9 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//ProductoJPADAO p =new ProductoJPADAO();
+		
 		String nombre = request.getParameter("nombre");
 		String rol = request.getParameter("rol");
 		
