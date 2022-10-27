@@ -30,8 +30,6 @@ public class Empleado implements Serializable {
 	@Column(name = "HIRE_DATE")
 	private Date fechaContratacion; // java.util.Date
 	
-	
-
 	@Column(name = "JOB_ID")
 	private String idTrabajo;       // USO  PARA INSERTS UPDATES 
 	
@@ -40,10 +38,15 @@ public class Empleado implements Serializable {
 	private Double salario;
 	@Column(name = "COMMISSION_PCT")
 	private Double comision;
+	
+	
 	@Column(name = "MANAGER_ID")
 	private Long idManager;
-	@Column(name = "DEPARTMENT_ID")
-	private Integer idDepartamento;
+	
+	@ManyToOne
+	@JoinColumn(name = "DEPARTMENT_ID")
+	//private Integer idDepartamento;
+	private Departamento departamento;
 
 	public Empleado() {
 		super();
@@ -134,14 +137,13 @@ public class Empleado implements Serializable {
 		this.idManager = idManager;
 	}
 
-	public Integer getIdDepartamento() {
-		return idDepartamento;
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
 	}
 
-	public void setIdDepartamento(Integer idDepartamento) {
-		this.idDepartamento = idDepartamento;
+	public Departamento getDepartamento() {
+		return departamento;
 	}
-
 	
 
 	@Override
@@ -173,9 +175,9 @@ public class Empleado implements Serializable {
 	public String toString() {
 		return "Empleado [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email
 				+ ", telefono=" + telefono + ", fechaContratacion=" + fechaContratacion + ", idTrabajo=" + idTrabajo
-				+ ", salario=" + salario + ", comision=" + comision + ", idManager=" + idManager + ", idDepartamento="
-				+ idDepartamento + "]";
+				+ ", salario=" + salario + ", comision=" + comision + ", idManager=" + idManager + ", departamento="
+				+ departamento + "]";
 	}
-	
+
 	
 }
