@@ -1,5 +1,7 @@
 package com.curso.JPA.pruebas;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +11,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.curso.JPA.entidades.Departamento;
@@ -59,13 +62,13 @@ public class PruebasConsultasJPA {
 		
 		
 		//EJECUTAR UNA CONSULTA CON PARAMETROS
-		Query qConParam =em.createNamedQuery("Departamento.findByManager");
-		qConParam.setParameter("manager_id", 108);
-		List<Departamento> departamentos108 = qConParam.getResultList();
-		System.out.println("Los departamentos del manager 108 son: ");
-		for(Departamento d3: departamentos108) {
-			System.out.println(d3);
-		}
+//		Query qConParam =em.createNamedQuery("Departamento.findByManager");
+//		qConParam.setParameter("manager_id", 108);
+//		List<Departamento> departamentos108 = qConParam.getResultList();
+//		System.out.println("Los departamentos del manager 108 son: ");
+//		for(Departamento d3: departamentos108) {
+//			System.out.println(d3);
+//		}
 		
 		/*
 		 * select d.department_id, d.department_name, e.first_name, e.last_name	
@@ -90,8 +93,10 @@ public class PruebasConsultasJPA {
 		//filtro NOMBRE
 		//filtro JOB_ID
 		
-		String nombre= null;
-		Integer idJob = 0;
+		String nombre= "Steven";
+		String apellidos = null;
+		String idJob = null;
+		Double salario = 999.0;
 		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		
@@ -99,7 +104,39 @@ public class PruebasConsultasJPA {
 		CriteriaQuery<Empleado> cq = cb.createQuery(Empleado.class);
 		
 		//from
-		Root<Empleado> from = cq.from(Empleado.class);
+		Root<Empleado> empleado = cq.from(Empleado.class);
+		
+		//objeto tipo Predicate que va montando el condiciones del where
+		Predicate miWhere = null;
+		List<Predicate> condiciones = new ArrayList<>();
+		
+		//si me has pasado un nombre de emple lo añado al where
+		if(nombre !=null) {
+			//cq.where(cb.equal(empleado.get("nombre"), nombre));
+			condiciones.add( cb.equal(empleado.get("nombre"), nombre));
+		}
+		if(apellidos!= null) {
+			//cq.where(cb.equal(empleado.get("apellidos"), apellidos));
+			condiciones.add(cb.equal(empleado.get("apellidos"), apellidos));
+		} //se puede añadir mas criterios
+		if(salario !=null) {
+			condiciones.add(cb.greaterThan(empleado.get("salario"), salario));
+		}
+		
+		//OR JOBID='AD_ASST'
+		Predicate todosAnd = cb.and(condiciones.toArray(new Predicate[0]));
+		Predicate job = cb.equal(empleado.get("idTrabajo"), "AD_ASST");
+		Predicate whereFinal =	cb.or(todosAnd, job);
+		cq.where(whereFinal);
+		
+//		//WHERE
+//		if(condiciones.size()>0) {
+//			//ArrayList en un Array de Predicate
+//			Predicate[] condicionesFinal = new Predicate[condiciones.size()];
+//			condiciones.toArray(condicionesFinal);
+//			cq.where(condicionesFinal);
+//			cq.where(condiciones.toArray(new Predicate[0]));
+//		}
 		
 		//Ejecutar la cnosulta
 		Query qCriteria  = em.createQuery(cq);
@@ -107,7 +144,7 @@ public class PruebasConsultasJPA {
 		
 		System.out.println("........LOS EMPLEADOS: ");
 		for(Empleado e: listaEmpleados) {
-			System.out.printf("%s %s %n",e.getNombre(), e.getApellidos());
+			System.out.printf("%s %s %.2f %n",e.getNombre(), e.getApellidos(), e.getSalario());
 		}
 	}
 }
