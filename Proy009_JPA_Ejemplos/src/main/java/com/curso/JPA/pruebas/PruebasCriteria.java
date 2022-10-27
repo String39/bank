@@ -26,7 +26,7 @@ public class PruebasCriteria {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("OracleHRPU");
 		EntityManager em = factory.createEntityManager();
 		
-		Integer localidad=null;
+		Integer localidad= null;
 		Integer idmanager = null;
 		
 		CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -46,11 +46,16 @@ public class PruebasCriteria {
 			man =(cb.equal(depart.get("manager_id"), idmanager));
 		}
 		
-		if(loc!= null && man !=null) {
+		if(loc!= null && man !=null) 
+		{
 			fin = cb.or(loc,man);
-		}else if (loc!=null) {
+		}
+		else if (loc!=null) 
+		{
 			fin = loc;
-		}else {
+		}
+		else if(man!=null)
+		{
 			fin = man;
 		}
 		
@@ -63,12 +68,16 @@ public class PruebasCriteria {
 			cq.where(fin);
 		}
 		
+		//ORDER BY
+		cq.orderBy(cb.asc(depart.get("nombreDepartamento"))); //ascendente
+		cq.orderBy(cb.desc(depart.get("nombreDepartamento"))); //descendente
+		
 		Query qCriteria  = em.createQuery(cq);
 		List<Departamento> listaDepartamentos = qCriteria.getResultList();
 		
 		System.out.println("........Los Departamentos: ");
 		for(Departamento d: listaDepartamentos) {
-			System.out.printf("%d %d  %n",d.getManager_id(), d.getIdLocalidad());
+			System.out.printf("%s con id: %s en localidad: %s  %n",d.getNombreDepartamento(), d.getManager_id(), d.getIdLocalidad());
 		}
 		
 	}
