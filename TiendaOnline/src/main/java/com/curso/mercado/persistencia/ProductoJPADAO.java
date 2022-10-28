@@ -11,48 +11,53 @@ import com.curso.mercado.entidades.Producto;
 
 public class ProductoJPADAO implements GenericDAO<Producto> 
 {
-//	EntityManagerFactory factory = Persistence.createEntityManagerFactory("OracleHRPU");
-//	EntityManager em = factory.createEntityManager();
 	
+	private static EntityManagerFactory factory;
+
+	static {
+		factory = Persistence.createEntityManagerFactory("OracleHRPU");	
+	}
 	@Override
 	public void add(Producto p) {
-//		em.getTransaction().begin();
-//		p.setIdProducto(null);
-//		p.setDescripcion("SUGUS");
-//		p.setPrecio(10);
-//		p.setStock(20);
-//		em.getTransaction().commit();
-//		System.out.println("Producto creado con id: " + p.getIdProducto());
+		EntityManager em = factory.createEntityManager();
+		try {
+			em.getTransaction().begin();
+			em.persist(p);
+			System.out.println("Producto añadido");
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.out.println("NO se ha podido añadir");
+			em.getTransaction().rollback();
+		}
 	}
 
 	@Override
 	public List<Producto> getAll() {
-		
-//		try {
-//			Query consulta = em.createQuery("SELECT * "
-//					+ " FROM Prodcutos ");
-//			
-//			List<Producto> lista = consulta.getResultList();
-//			
-//			System.out.println("Lista de departamentos sin manager");
-//			for (Producto d2: lista) {
-//				return lista;
-//			}
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		return null;
-		
+		EntityManager em = factory.createEntityManager();
+			Query consulta = em.createQuery("SELECT p FROM Producto p");
+			List<Producto> lista = consulta.getResultList();
+			return lista;
 	}
 
 	@Override
 	public Producto getByID(int id) {
+		EntityManager em = factory.createEntityManager();
+		Producto p =em.find(Producto.class, id);
+		if(p!=null) {
+			return p;
+		}
 		return null;
+		
 	}
 
 	@Override
 	public void delete(int id) {
+		EntityManager em = factory.createEntityManager();
+		em.getTransaction().begin();
+		Producto p =em.find(Producto.class, id);
+		if(p!=null) {
+			em.remove(p);
+		}
 		
 	}
 

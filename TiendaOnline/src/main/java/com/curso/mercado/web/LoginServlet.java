@@ -32,6 +32,8 @@ public class LoginServlet extends HttpServlet {
     	// es para todos los usuarios/paginas/servlets etc
     	System.out.println(".... ServletContext" + config.getServletContext());
     	config.getServletContext().setAttribute("tituloTienda", "LAS MARAVILLAS");
+//    	System.out.println("Probando.....");
+//    	new ProductoJPADAO();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
