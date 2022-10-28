@@ -38,6 +38,7 @@
 		</select>
 		Cantidad <input type ="number" name="cantidad" value="">
 		<button type="submit" class="btn btn-primary">Comprar</button>
+		
 	</form>
 </body>
 </html>
