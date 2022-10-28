@@ -46,15 +46,15 @@ public class ProductoJPADAO implements GenericDAO<Producto>
 		if(p!=null) {
 			return p;
 		}
-		return null;
-		
+		return null;	
 	}
 
 	@Override
 	public void delete(int id) {
 		EntityManager em = factory.createEntityManager();
 		em.getTransaction().begin();
-		Producto p =em.find(Producto.class, id);
+//		Producto p =em.find(Producto.class, id);
+		Producto p = getByID(id);
 		if(p!=null) {
 			em.remove(p);
 		}
