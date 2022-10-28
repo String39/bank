@@ -8,5 +8,7 @@ public class miAplicacion {
 	public static void main(String[] args) {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans-con-anotaciones.xml");
 			
+		NominasService s = (NominasService) ctx.getBean("nominas");
+		s.calcularNomina();
 	}
 }

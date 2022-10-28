@@ -3,7 +3,7 @@ package com.curso.spring.ejemplo002;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service(value="nominas")
 public class NominaServiceImp implements NominasService{
 
 	//inyecta en la variable de ref irpfService una instancia de 
@@ -16,7 +16,7 @@ public class NominaServiceImp implements NominasService{
 	
 	@Override
 	public void calcularNomina() {
-		System.out.printf("................. tu nomina es %d con un "
+		System.out.printf("................. tu nomina es %f con un "
 				+ " IRPF %5.3f %n",233.0, irpfService.calcularIRPF());
 		
 	}
