@@ -3,11 +3,28 @@ package com.curso.mercado.entidades;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "PRODUCTOS")
 public class Producto implements Serializable{
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCTOS_SEQ")
+	@SequenceGenerator(sequenceName = "PRODUCTOS_SEQ", name = "PRODUCTOS_SEQ", allocationSize=1)
+	@Column(name = "ID_PRODUCTO")
 	private Integer idProducto;
+	@Column(name = "DESCRIPCION")
 	private String descripcion;
+	@Column(name = "PRECIO")
 	private double precio;
+	@Column(name = "STOCK")
 	private int stock = 5;
 	
 	

@@ -19,6 +19,7 @@ public class Coffee {
 				String url = "jdbc:oracle:thin:@localhost:49161:xe";
 				String usr = "SYSTEM";
 				String clave = "oracle";
+				
 		try (Connection con = DriverManager.getConnection(url, usr, clave)) {
 
 			System.out.println("conectó ok");
@@ -27,17 +28,19 @@ public class Coffee {
 			Statement st = con.createStatement();
 			
 			
+			
+			
 			//Crear un table
 //			String sentenciaCreate = "CREATE TABLE HR.COFFEES(COF_NAME VARCHAR(32), SUP_ID INTEGER, PRICE FLOAT, SALES INTEGER, TOTAL INTEGER)";
 //			st.executeUpdate(sentenciaCreate);
 	
 			//Introducir datos
-			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('Colombian', 7.99, 0, 0)");
-			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('French_Roast', 49, 8.99, 0, 0)");
-			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('Espresso', 150, 9.99, 0, 0)");
-			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('Colombian_Decaf', 101, 8.99, 0, 0)");
-			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('French_Roast_Decaf', 49, 9.99, 0, 0)");
-			
+//			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('Colombian', 7.99, 0, 0)");
+//			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('French_Roast', 49, 8.99, 0, 0)");
+//			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('Espresso', 150, 9.99, 0, 0)");
+//			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('Colombian_Decaf', 101, 8.99, 0, 0)");
+//			st.executeUpdate("INSERT INTO HR.COFFEES" + " VALUES ('French_Roast_Decaf', 49, 9.99, 0, 0)");
+//			
 			ResultSet rs =	st.executeQuery("SELECT * FROM HR.COFFEES");
 			while(rs.next()) {
 				System.out.print(rs.getString(1)+ " "); //columna1
