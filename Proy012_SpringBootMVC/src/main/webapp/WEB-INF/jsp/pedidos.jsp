@@ -9,7 +9,7 @@
 <title>PEDIDOS</title>
 </head>
 <body>
-	<h2> Bienvenido ${nombre} !!!!!</h2>
+	<h2> Bienvenido ${usuario.nombre} !!!!!</h2>
 	<h2> Listado de Pedidos</h2>
 	<ul>
 	<c:forEach items="${listaPedidos}" var = "pedido">

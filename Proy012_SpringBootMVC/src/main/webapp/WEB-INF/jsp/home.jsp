@@ -10,6 +10,6 @@
 </head>
 <body>
 	<h2> Bienvenido ${usuario.nombre} !!!!!</h2>
-	<a href="http://localhost:8080/pedidos"> Listado</a>
+	<a href="pedidos"> Listado</a>
 </body>
 </html>

@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.spring.entidades.Pedido;
+import com.example.spring.entidades.Usuario;
 import com.example.spring.servicios.PedidosService;
 
 @Controller
-@SessionAttributes("nombre")
+@SessionAttributes("usuario")
 public class PedidosController {
 
 	@Autowired
@@ -21,8 +22,8 @@ public class PedidosController {
 	@GetMapping("/pedidos")
 	public String pedidos(Model model) {
 		//pedidoService.generarPedido(new Pedido());
-		String usr = (String) model.getAttribute("nombre");
-		Collection<Pedido> lista = pedidoService.getPedidos(usr);
+		Usuario usr = (Usuario) model.getAttribute("usuario");
+		Collection<Pedido> lista = pedidoService.getPedidos(usr.getNombre());
 		model.addAttribute("listaPedidos", lista);
 		return "pedidos";
 	}
