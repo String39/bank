@@ -9,7 +9,7 @@
 <title>INICIO</title>
 </head>
 <body>
-	<h2> Bienvenido ${nombre} !!!!!</h2>
+	<h2> Bienvenido ${usuario.nombre} !!!!!</h2>
 	<a href="http://localhost:8080/pedidos"> Listado</a>
 </body>
 </html>
