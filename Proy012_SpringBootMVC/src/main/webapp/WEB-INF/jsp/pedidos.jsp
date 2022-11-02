@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>INICIO</title>
+<title>PEDIDOS</title>
 </head>
 <body>
-	<h2> Bienvenido ${nombre} !!!!!</h2>
-	FELICIDADES
+	<h2> Listado de Pedidos</h2>
+	
 </body>
 </html>

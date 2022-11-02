@@ -1,5 +1,7 @@
 package com.example.spring.repositorio;
 
+import java.util.Collection;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +18,11 @@ public class PedidoJPARepositoryImp  implements PedidoRepository{
 	@Override
 	public void add(Pedido pedido) {
 		Log.info("grabar pedido con jpa");		
+	}
+
+	@Override
+	public Collection<Pedido> getPedidosByUser(String user) {
+		return null;
 	}
 
 }
