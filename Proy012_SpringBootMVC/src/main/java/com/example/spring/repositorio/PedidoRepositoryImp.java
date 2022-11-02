@@ -46,6 +46,7 @@ public class PedidoRepositoryImp implements PedidoRepository{
 				lista.add(p);
 			}
 		}
+		Log.info(lista.toString());
 		return lista;
 	}
 

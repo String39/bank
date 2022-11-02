@@ -1,5 +1,7 @@
 package com.example.spring.servicios;
 
+import java.util.Collection;
+
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
@@ -38,6 +40,11 @@ public class PedidoServiceImp implements PedidosService{
 	public void generarPedido(Pedido p) {
 		Log.info("GEstiono un pedido");
 		repo.add(p);
+	}
+
+	@Override
+	public Collection<Pedido> getPedidos(String user) {
+		return repo.getPedidosByUser(user);
 	}
 
 }

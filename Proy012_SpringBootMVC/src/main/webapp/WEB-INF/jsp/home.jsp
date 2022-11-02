@@ -10,6 +10,6 @@
 </head>
 <body>
 	<h2> Bienvenido ${nombre} !!!!!</h2>
-	FELICIDADES
+	<a href="http://localhost:8080/pedidos"> Listado</a>
 </body>
 </html>
