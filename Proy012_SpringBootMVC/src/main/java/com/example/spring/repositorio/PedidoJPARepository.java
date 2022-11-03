@@ -7,9 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import com.example.spring.entidades.Pedido;
 
+@Repository
 public interface PedidoJPARepository  extends JpaRepository<Pedido, Integer>{
 
 	public static Logger Log = LoggerFactory.getLogger(PedidoJPARepository.class);
@@ -19,8 +21,7 @@ public interface PedidoJPARepository  extends JpaRepository<Pedido, Integer>{
 	public Collection<Pedido> getAllByUser(String userName);
 	
 	List<Pedido> findByUser(String user);
-
-	//public Pedido addPedido(Pedido p);
-	
-	
+//
+//	@Query("INSERT INTO Pedido p VALUES (?1)")
+//	public Pedido addPedido(Pedido p);
 }

@@ -22,11 +22,11 @@ public class PedidoServiceImp implements PedidosService{
 
 	private static Logger Log = LoggerFactory.getLogger(PedidoServiceImp.class);
 	
-	@Autowired
-	//Se hace con las interfaces no con las clases
-	//@Qualifier("pedidoRepoJPA")
-	@Qualifier("pedidoRepo")
-	private PedidoRepository repo;
+//	@Autowired
+//	//Se hace con las interfaces no con las clases
+//	//@Qualifier("pedidoRepoJPA")
+//	@Qualifier("pedidoRepo")
+//	private PedidoRepository repo;
 	
 	@Autowired
 	private PedidoJPARepository repoJPA;
@@ -69,7 +69,7 @@ public class PedidoServiceImp implements PedidosService{
 	@Override
 	public Pedido altaPedido(Pedido p) {
 		
-		return repo.addPedido(p);
+		return repoJPA.saveAndFlush(p);
 	}
 
 }

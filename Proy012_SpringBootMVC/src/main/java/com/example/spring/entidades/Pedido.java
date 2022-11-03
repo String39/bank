@@ -26,14 +26,11 @@ public class Pedido implements Serializable{
 	@SequenceGenerator(sequenceName = "PEDIDO_SEQ", name = "PED_SEQ", allocationSize=1)	
 	private Integer id;
 
-	
 	@NotNull
-	@Size(min=5)
 	@Column(name="USUARIO")
 	private String user;
 	
 	@NotNull
-	@Size(max=50)
 	@Column(name="DESCRIPCION")
 	private String descripcion;
 	
