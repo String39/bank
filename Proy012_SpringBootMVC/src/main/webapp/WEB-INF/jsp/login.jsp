@@ -10,11 +10,14 @@
 </head>
 <body>
 	<h2>Iniciar Sesion</h2>
-	<form:form action = "login" method="post" modelAttribute="usuarioForm">
+	<form:form action = "login" method="post" 
+				modelAttribute="usuarioForm">
 		<form:label path="nombre">Usuario:</form:label>
-		<form:input path="nombre"/> </br></br>
+		<form:input path="nombre"/>
+		<form:errors path="nombre"></form:errors> </br></br>
 		<form:label path="clave">Contraseña:</form:label>
-		<form:password path="clave"/> </br></br></br>
+		<form:password path="clave"/> 
+		<form:errors path="clave"></form:errors></br></br></br>
 		<form:button>LOGIN</form:button>
 	</form:form>
 </body>

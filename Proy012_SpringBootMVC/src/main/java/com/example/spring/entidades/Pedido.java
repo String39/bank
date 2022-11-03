@@ -4,12 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 //@Entity
 public class Pedido implements Serializable{
 
 	private Integer id;
+	@NotNull
+	@Size(min=5)
 	private String user;
+	@NotNull
+	@Size(max=50)
 	private String descripcion;
+	@NotNull
 	private Date fechaPedido;
 	private boolean entregado;
 	

@@ -53,7 +53,13 @@ public class PedidoServiceImp implements PedidosService{
 
 	@Override
 	public Pedido getPedido(Integer id) {
-		return null;
+		return repo.getById(id);
+	}
+
+	@Override
+	public Pedido altaPedido(Pedido p) {
+		
+		return repo.addPedido(p);
 	}
 
 }

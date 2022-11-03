@@ -11,10 +11,11 @@
 <body>
 	<h2> Bienvenido ${usuario.nombre} !!!!!</h2>
 	<c:if test="${usuario.roll eq 'cliente'}">
-	<a href="pedidos/${usuario.nombre}"> Listar mis pedisos</a>
+	<a href="pedidos/${usuario.nombre}"> Listar mis pedisos</a></br></br>
 	</c:if>
 	<c:if test="${usuario.roll eq 'admin'}">
-	<a href="pedidos"> Listado de pedidos</a>
+	<a href="pedidos"> Listado de pedidos</a></br></br>
 	</c:if>
+	<a href= "alta" >Alta Pedido</a>
 </body>
 </html>

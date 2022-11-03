@@ -60,4 +60,13 @@ public class PedidoRepositoryImp implements PedidoRepository{
 		return pedidos.get(id);
 	}
 
+	@Override
+	public Pedido addPedido(Pedido p) {
+		id++;
+		p.setId(id);
+		p.setFechaPedido(new Date());
+		pedidos.put(id, p);
+		return p;
+	}
+
 }

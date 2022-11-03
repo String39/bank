@@ -2,14 +2,21 @@ package com.example.spring.entidades;
 
 import java.util.Objects;
 
-public class Usuario {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+public class Usuario {
+	
+	@NotNull
+	@Size(min=2, max=20)
 	private String nombre;
+	
+	@NotNull
+	@Size(min=5)
 	private String clave;
 	private String roll;
 	
 	public Usuario() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(String nombre, String clave, String roll) {

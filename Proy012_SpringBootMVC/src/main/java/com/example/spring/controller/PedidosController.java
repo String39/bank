@@ -6,8 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -49,12 +52,38 @@ public class PedidosController {
 		
 		//hemos declarado opcional el id
 		//orElse (alternativa) sino aparece devuelve null, en el caso de que no te pase ningu id
-		Integer idCliente = id.orElse(null);
+		Integer idPedido = id.orElse(null);
+		
 		if(id.isEmpty()) {
 			return "redirect:/pedidos";
 		}
-		System.out.println(idCliente);
+		
+		//System.out.println(idCliente);
+		Pedido p = pedidoService.getPedido(idPedido);
+		model.addAttribute("pedido", p);
+		
 		return "detalle-pedido";
 	}
-
+	
+	@GetMapping("/alta")
+	public String altaPedido(Model model) {
+		model.addAttribute("altaForm", new Pedido());
+		return "alta-pedido";
+	}
+	
+	@PostMapping("/alta")
+	public String altaPedido(Model model,
+			@ModelAttribute("altaForm") Pedido pedido, 
+			BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			return "alta-pedido";
+			
+		}
+		
+		Usuario u = (Usuario) model.getAttribute("usuario");
+		pedido.setUser(u.getNombre());
+		Pedido p = pedidoService.altaPedido(pedido);
+		model.addAttribute("pedido", p);
+			return "detalle-pedido";
+	}
 }
