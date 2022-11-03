@@ -4,22 +4,50 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-//@Entity
+@Entity
+@Table(name="PEDIDOS")
 public class Pedido implements Serializable{
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PED_SEQ")
+	@SequenceGenerator(sequenceName = "PEDIDO_SEQ", name = "PED_SEQ", allocationSize=1)	
 	private Integer id;
+
+	
 	@NotNull
 	@Size(min=5)
+	@Column(name="USUARIO")
 	private String user;
+	
 	@NotNull
 	@Size(max=50)
+	@Column(name="DESCRIPCION")
 	private String descripcion;
+	
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="FECHA_PEDIDO")
 	private Date fechaPedido;
+	
+	@Column(name="ENTREGADO")
 	private boolean entregado;
+	
+	//no va a base de datos
+//	@Transient
+//	private boolean seleccionado;
 	
 	public Pedido() {
 	}

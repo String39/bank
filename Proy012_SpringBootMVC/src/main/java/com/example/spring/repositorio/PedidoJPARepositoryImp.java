@@ -37,7 +37,6 @@ public class PedidoJPARepositoryImp  implements PedidoRepository{
 
 	@Override
 	public Pedido addPedido(Pedido p) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

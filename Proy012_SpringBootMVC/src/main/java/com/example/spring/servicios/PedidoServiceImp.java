@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.example.spring.entidades.Pedido;
+import com.example.spring.repositorio.PedidoJPARepository;
 import com.example.spring.repositorio.PedidoRepository;
 import com.example.spring.repositorio.PedidoRepositoryImp;
 
@@ -27,33 +28,42 @@ public class PedidoServiceImp implements PedidosService{
 	@Qualifier("pedidoRepo")
 	private PedidoRepository repo;
 	
+	@Autowired
+	private PedidoJPARepository repoJPA;
+	
 	public void PedidoRepositoryImp() {
-		Log.info("....instanciando PedidoServiceImp " + repo);
+		Log.info("....instanciando PedidoServiceImp " + repoJPA);
 	}
 	
 	@PostConstruct
 	public void init() {
-		Log.info("..postconstructor " + repo);
+		Log.info("..postconstructor " + repoJPA);
 	}
 	
 	@Override
 	public void generarPedido(Pedido p) {
 		Log.info("GEstiono un pedido");
-		repo.add(p);
+		//repo.add(p);
+		repoJPA.saveAndFlush(p);
 	}
 
 	@Override
 	public Collection<Pedido> getPedidos(String user) {
 		if(user == null) {
-			return repo.getAll();
+			//return repo.getAll();
+			return repoJPA.findAll();
 		}else {
-			return repo.getPedidosByUser(user);
+			//return repo.getPedidosByUser(user);
+			Pedido pFiltro = new Pedido();
+			pFiltro.setUser(user);
+			return repoJPA.findByUser(user);
 		}
 	}
 
 	@Override
 	public Pedido getPedido(Integer id) {
-		return repo.getById(id);
+		//return repo.getById(id);
+		return repoJPA.getReferenceById(id);
 	}
 
 	@Override
