@@ -25,4 +25,14 @@ public class PedidoJPARepositoryImp  implements PedidoRepository{
 		return null;
 	}
 
+	@Override
+	public Collection<Pedido> getAll() {
+		return null;
+	}
+
+	@Override
+	public Pedido getById(Integer id) {
+		return null;
+	}
+
 }

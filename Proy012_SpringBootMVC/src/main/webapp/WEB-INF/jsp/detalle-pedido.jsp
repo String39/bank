@@ -6,15 +6,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>INICIO</title>
+<title>PEDIDO</title>
 </head>
 <body>
-	<h2> Bienvenido ${usuario.nombre} !!!!!</h2>
-	<c:if test="${usuario.roll eq 'cliente'}">
-	<a href="pedidos/${usuario.nombre}"> Listar mis pedisos</a>
-	</c:if>
-	<c:if test="${usuario.roll eq 'admin'}">
-	<a href="pedidos"> Listado de pedidos</a>
-	</c:if>
+	<h2> Detalle Pedido</h2>
+
 </body>
 </html>

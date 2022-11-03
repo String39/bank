@@ -22,7 +22,7 @@ public class LoginController {
 	//formulario en el que pido usuario y clave
 	@GetMapping("/login")
 	public String loginPage(Model model) {
-		model.addAttribute("usuario", new Usuario());
+		model.addAttribute("usuarioForm", new Usuario());
 		return"login";
 	}
 	
@@ -31,11 +31,19 @@ public class LoginController {
 	@PostMapping("/login")
 	public String isAHome(
 			Model model,
-			@ModelAttribute("usuario") Usuario usuario)
+			@ModelAttribute("usuarioForm") Usuario usuario)
 			{
-		//boolean  valido = loginService.validaLog(nombre, clave)
+		boolean  valido =true;
+		//loginService.validaLog(nombre, clave)
+		//TODO llamar a un service para que haga la tarea login//trim eliminar espacios//ignorecase comparar mayus y mnus
+		if(usuario.getNombre().trim().equalsIgnoreCase("LUSI")) {
+			usuario.setRoll("cliente");
+		}else {
+			usuario.setRoll("admin");
+		}
 		
-		usuario.setRoll("cliente");
+		if(valido)model.addAttribute("usuario", usuario);
+		
 		return "home";
 		//return "login"
 	}

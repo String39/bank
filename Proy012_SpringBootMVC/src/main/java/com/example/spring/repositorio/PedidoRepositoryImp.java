@@ -50,4 +50,14 @@ public class PedidoRepositoryImp implements PedidoRepository{
 		return lista;
 	}
 
+	@Override
+	public Collection<Pedido> getAll() {
+		return pedidos.values();
+	}
+
+	@Override
+	public Pedido getById(Integer id) {
+		return pedidos.get(id);
+	}
+
 }
