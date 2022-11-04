@@ -60,7 +60,7 @@ public class PedidosController {
 		}
 		
 		//System.out.println(idCliente);
-		Pedido p = pedidoService.getPedido(idPedido);
+		Pedido p = pedidoService.getPedido(idPedido).get();
 		model.addAttribute("pedido", p);
 		
 		return "detalle-pedido";

@@ -1,6 +1,7 @@
 package com.example.spring.restcontroller;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +26,12 @@ public class PedidosRestFullController {
 	
 	//GET BY ID
 	@GetMapping("/ws/pedidos/{id}")
-	public Pedido byId(
-			@PathVariable ("id") Integer id) {
+	public Optional<Pedido> byId(
+			@PathVariable Integer id) {
 		
 		 return  pedidoService.getPedido(id);	
 	}
+	
 	//INSERT
 	//DELETE
 	//UPDATE

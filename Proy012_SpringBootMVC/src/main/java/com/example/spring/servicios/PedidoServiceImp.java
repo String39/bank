@@ -1,6 +1,7 @@
 package com.example.spring.servicios;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -68,9 +69,9 @@ public class PedidoServiceImp implements PedidosService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public Pedido getPedido(Integer id) {
+	public Optional<Pedido> getPedido(Integer id) {
 		//return repo.getById(id);
-		return repoJPA.getReferenceById(id);
+		return repoJPA.findById(id);
 	}
 
 	@Override
