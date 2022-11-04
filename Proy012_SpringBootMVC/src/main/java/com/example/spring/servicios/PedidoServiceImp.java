@@ -46,11 +46,10 @@ public class PedidoServiceImp implements PedidosService{
 	}
 	
 	@Override
-	public void generarPedido(Pedido p) {
+	public Pedido generarPedido(Pedido p) {
 		//begin transaction
-		Log.info("GEstiono un pedido");
-		//repo.add(p);
-		repoJPA.saveAndFlush(p);
+		Log.info("Gestiono un pedido");
+		return repoJPA.save(p);
 	}//commit o rollback
 
 	@Override
