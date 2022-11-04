@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,7 +44,17 @@ public class PedidosRestFullController {
 		Pedido pConId = pedidoService.generarPedido(newPedido);
 		return pConId;
 	}
+	
+	
 	//DELETE
+	
 	//UPDATE
+	@PutMapping("ws/pedidos")
+	public Pedido update(
+			@RequestBody Pedido newPedido) {
+		//pedidoService.altaPedido(newPedido);
+		//Pedido pConId = pedidoService.generarPedido(newPedido);
+		return null;
+	}
 
 }
