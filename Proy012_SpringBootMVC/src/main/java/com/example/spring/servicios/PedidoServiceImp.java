@@ -4,12 +4,15 @@ import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.spring.entidades.Pedido;
 import com.example.spring.repositorio.PedidoJPARepository;
@@ -18,6 +21,7 @@ import com.example.spring.repositorio.PedidoRepositoryImp;
 
 @Service
 //@Lazy
+@Transactional(propagation = Propagation.REQUIRED)
 public class PedidoServiceImp implements PedidosService{
 
 	private static Logger Log = LoggerFactory.getLogger(PedidoServiceImp.class);
@@ -42,12 +46,14 @@ public class PedidoServiceImp implements PedidosService{
 	
 	@Override
 	public void generarPedido(Pedido p) {
+		//begin transaction
 		Log.info("GEstiono un pedido");
 		//repo.add(p);
 		repoJPA.saveAndFlush(p);
-	}
+	}//commit o rollback
 
 	@Override
+	@Transactional(readOnly = true)
 	public Collection<Pedido> getPedidos(String user) {
 		if(user == null) {
 			//return repo.getAll();
@@ -61,6 +67,7 @@ public class PedidoServiceImp implements PedidosService{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Pedido getPedido(Integer id) {
 		//return repo.getById(id);
 		return repoJPA.getReferenceById(id);

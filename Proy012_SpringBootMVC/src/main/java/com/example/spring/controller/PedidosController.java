@@ -1,6 +1,7 @@
 package com.example.spring.controller;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,20 @@ public class PedidosController {
 		Pedido p = pedidoService.altaPedido(pedido);
 		model.addAttribute("pedido", p);
 			return "detalle-pedido";
+	}
+	
+	//pedir?desc=zapato&cantidad=56
+	@GetMapping("/pedir")
+	public String hacerPedido(
+			@RequestParam String desc,
+			@RequestParam int cantidad) {
+		
+		//no hay contexto transaccional de bd
+		//no se ha iniciado ninguna transaccion todavia
+		Pedido p = new Pedido();
+		p.setDescripcion(desc);
+		p.setFechaPedido(new Date());
+		this.pedidoService.generarPedido(p);
+		return "redirect:/pedidos";
 	}
 }
