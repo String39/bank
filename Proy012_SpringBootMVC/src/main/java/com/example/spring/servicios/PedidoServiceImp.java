@@ -79,4 +79,15 @@ public class PedidoServiceImp implements PedidosService{
 		return repoJPA.saveAndFlush(p);
 	}
 
+	@Override
+	public Pedido modificar(Pedido p) {
+		repoJPA.save(p);
+		return null;
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		repoJPA.deleteById(id);
+	}
+
 }

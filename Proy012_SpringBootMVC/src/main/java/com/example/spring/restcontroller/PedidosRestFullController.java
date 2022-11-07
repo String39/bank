@@ -38,7 +38,7 @@ public class PedidosRestFullController {
 	
 	//{"user":"1","descripcion":"Rosas","fechaPedido":"2022-11-11T12:35:23.307+00:00","entregado":false}
 	//INSERT
-	@PostMapping("ws/pedidos")
+	@PostMapping("/ws/pedidos")
 	public Pedido alta(
 			@RequestBody Pedido newPedido) {
 		//pedidoService.altaPedido(newPedido);
@@ -49,15 +49,17 @@ public class PedidosRestFullController {
 	
 	//DELETE
 	@DeleteMapping("/ws/pedidos/{id}")
+	public void deleteById(@PathVariable Integer id) {
+		pedidoService.borrar(id);
+	}
 	
 	
 	//UPDATE
-	@PutMapping("ws/pedidos")
-	public Pedido update(
-			@RequestBody Pedido newPedido) {
+	@PutMapping("/ws/pedidos")
+	public Pedido update(@RequestBody Pedido newPedido) {
 		//pedidoService.altaPedido(newPedido);
-		//Pedido pConId = pedidoService.generarPedido(newPedido);
-		return null;
+		Pedido pModif = pedidoService.modificar(newPedido);
+		return pModif;
 	}
 
 }
